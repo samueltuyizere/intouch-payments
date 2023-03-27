@@ -1,0 +1,25 @@
+{
+    "compilerOptions": {
+      /* Basic Options */
+      "target": "es2018",                       /* Specify ECMAScript target version: 'ES3' (default), 'ES5', 'ES2015', 'ES2016', 'ES2017', or 'ESNEXT'. */
+      "module": "commonjs",                     /* Specify module code generation: 'commonjs', 'amd', 'system', 'umd' or 'es2015'. */
+      "declaration": true,                     /* Generates corresponding '.d.ts' file. */
+      "declarationMap": true,
+      "sourceMap": true,                        /* Generates corresponding '.map' file. */
+      "outDir": "./dist",                       /* Redirect output structure to the directory. */
+      /* Strict Type-Checking Options */
+      "strict": true,                           /* Enable all strict type-checking options. */
+      "noImplicitAny": false,                   /* Raise error on expressions and declarations with an implied 'any' type. */
+      "strictNullChecks": false,                /* Enable strict null checks. */
+      "moduleResolution": "node",               /* Specify module resolution strategy: 'node' (Node.js) or 'classic' (TypeScript pre-1.6). */
+      "baseUrl": "./src",                       /* Base directory to resolve non-absolute module names. */
+      "rootDirs": [],                           /* List of root folders whose combined content represents the structure of the project at runtime. */
+    },
+    "include": [
+      "src/**/*"
+    ],
+    "exclude": [
+      "node_modules",
+      "**/*.test.ts"
+    ]
+  }
