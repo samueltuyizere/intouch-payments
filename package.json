@@ -1,0 +1,36 @@
+{
+  "name": "intouch-payments",
+  "version": "0.0.1",
+  "description": "This is a js wrapper for the intouchpayments API to process MTN MoMo and Airtel Money Transactions",
+  "main": "dist/index.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/samueltuyizere/intouch-payments.git"
+  },
+  "scripts": {
+    "build": "tsc",
+    "release": "npm run build && git push && npm publish"
+  },
+  "keywords": [
+    "MoMo",
+    "MTN",
+    "Airtel Money Rwanda"
+  ],
+  "author": "TUYIZERE Samuel",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/node": "^18.15.10",
+    "typescript": "^5.0.2"
+  },
+  "dependencies": {
+    "axios": "^1.3.4",
+    "crypto": "^1.0.1"
+  },
+  "bugs": {
+    "url": "https://github.com/samueltuyizere/intouch-payments/issues"
+  },
+  "files": [
+    "dist"
+  ],
+  "homepage": "https://github.com/samueltuyizere/intouch-payments#readme"
+}
