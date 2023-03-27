@@ -1,6 +1,6 @@
 ## Summary
 
-This Library provides easy access to ![Intouchpay's](http://intouchpay.co.rw/) API to process mobile money payments by MTN Rwanda Mobile Money accounts and Airtel Money accounts.
+This Library provides easy access to [Intouchpay's](http://intouchpay.co.rw/) API to process mobile money payments by MTN Rwanda Mobile Money accounts and Airtel Money accounts.
 
 Available features are:
 
@@ -69,4 +69,4 @@ const request = await IntouchApi.getBalance()
 
 # Going Live
 Contact the Intouch team to set up a callback url to receive webhooks and get live credentials
-![Email](mailto:benitha.louange@intouch.co.rw)
+[Email](mailto:benitha.louange@intouch.co.rw)
