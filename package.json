@@ -1,6 +1,6 @@
 {
   "name": "intouch-payments",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "description": "This is a js wrapper for the intouchpayments API to process MTN MoMo and Airtel Money Transactions",
   "main": "dist/index.js",
   "repository": {
@@ -13,7 +13,7 @@
   },
   "keywords": [
     "MoMo",
-    "MTN",
+    "MTN Rwanda",
     "Airtel Money Rwanda"
   ],
   "author": "TUYIZERE Samuel",
