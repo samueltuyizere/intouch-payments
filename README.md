@@ -1,6 +1,6 @@
 ## Summary
 
-This Library provides easy access to Intouchpayment's API to process mobile money payments by MTN Rwanda Mobile Money accounts and Airtel Money accounts.
+This Library provides easy access to ![Intouchpay's](http://intouchpay.co.rw/) API to process mobile money payments by MTN Rwanda Mobile Money accounts and Airtel Money accounts.
 
 Available features are:
 
@@ -10,17 +10,17 @@ Available features are:
 
 ### Set Up
 
-Before you start using this package, Contact the IntouchPayments team and request the following:
+Before you start using this package, Contact the IntouchPay team and request the following:
 - username
 - accountno
 - partnerpassword
 
 For testing purposes you can use these:
 - username: testa
-- accountno: 
-- partnerpassword: 
+- accountno: 250160000011
+- partnerpassword: pass123456789
 
-However, confirm first with their team so that you are the only one using the test account, and test with the lowes amount possible (100 RWF)
+However, confirm first with their team so that you are the only one using the test account, and test with the lowest amount possible (100 RWF)
 
 ## Usage
 
@@ -39,3 +39,34 @@ npm install intouch-payments
 const IntouchApi = require('intouch-payments'); // or import IntouchApi from 'intouch-payments'
 const intouch = new IntouchApi(process.env.INTOUCH_USERNAME, process.env.INTOUCH_ACCOUNT_NO, process.env.INTOUCH_PARTNER_PASSWORD);
 ```
+
+### Getting money from a momo account (requesting a payment)
+
+```javascript
+const IntouchApi = require('intouch-payments'); // or import IntouchApi from 'intouch-payments'
+const intouch = new IntouchApi(process.env.INTOUCH_USERNAME, process.env.INTOUCH_ACCOUNT_NO, process.env.INTOUCH_PARTNER_PASSWORD);
+
+const request = await IntouchApi.requestPayment(amount, phone, transactionId) // (100, '2507xxxxxxxx', 'sample-reference')
+```
+
+### Sending money to a momo account (requesting a deposit / withdraw)
+
+```javascript
+const IntouchApi = require('intouch-payments'); // or import IntouchApi from 'intouch-payments'
+const intouch = new IntouchApi(process.env.INTOUCH_USERNAME, process.env.INTOUCH_ACCOUNT_NO, process.env.INTOUCH_PARTNER_PASSWORD);
+
+const request = await IntouchApi.requestDeposit(amount, phone, transactionId, reason) // (100, '2507xxxxxxxx', 'sample-reference', 'testing-withdraw')
+```
+
+### Getting your account's balance
+
+```javascript
+const IntouchApi = require('intouch-payments'); // or import IntouchApi from 'intouch-payments'
+const intouch = new IntouchApi(process.env.INTOUCH_USERNAME, process.env.INTOUCH_ACCOUNT_NO, process.env.INTOUCH_PARTNER_PASSWORD);
+
+const request = await IntouchApi.getBalance()
+```
+
+# Going Live
+Contact the Intouch team to set up a callback url to receive webhooks and get live credentials
+![Email](mailto:benitha.louange@intouch.co.rw)
