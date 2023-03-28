@@ -1,4 +1,4 @@
-import { IntouchAPIEndpoints } from './types';
+import { GetBalanceFailureResponse, GetBalanceSuccessResponse, IntouchAPIEndpoints, RequestDepositResponse, RequestPaymentResponse } from './types';
 import axios from 'axios';
 import * as crypto from 'crypto';
 import * as FormData from 'form-data';
@@ -60,7 +60,7 @@ export class IntouchApi {
    * @param transactionId // your own transaction id for reference
    * @returns 
    */
-  public async requestPayment (amount: number, phone: string, transactionId: string) {
+  public async requestPayment (amount: number, phone: string, transactionId: string): Promise<RequestPaymentResponse> {
     const password = this.generatePassword()
     const body = {
       username: this.intouchUsername,
@@ -84,7 +84,7 @@ export class IntouchApi {
    * @param reason // your reason/note/comment on the transaction
    * @returns 
    */
-  public async requestDeposit (amount: number, phone: string, transactionId: string, reason: string) {
+  public async requestDeposit (amount: number, phone: string, transactionId: string, reason: string): Promise<RequestDepositResponse> {
     const password = this.generatePassword()
     const body = {
       username: this.intouchUsername,
@@ -100,7 +100,7 @@ export class IntouchApi {
     return await this.makeRequest('POST', body, IntouchAPIEndpoints.REQUEST_DEPOSIT)
   }
 
-  public async getBalance () {
+  public async getBalance () :Promise<GetBalanceSuccessResponse | GetBalanceFailureResponse>{
     const password = this.generatePassword()
 
     const bodyFormData = new FormData()
