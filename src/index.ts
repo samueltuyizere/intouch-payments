@@ -62,15 +62,19 @@ export class IntouchApi {
    * @param transactionId // your own transaction id for reference
    * @returns 
    */
-  public async requestPayment (amount: number, phone: string, transactionId: string): Promise<RequestPaymentResponse> {
+  public async requestPayment (
+    amount: string, 
+    mobilephone: string,
+    requesttransactionid: string
+    ): Promise<RequestPaymentResponse> {
     const password = this.generatePassword()
     const body = {
       username: this.intouchUsername,
       timestamp: String(Math.round(new Date().getTime() / 1000)),
-      amount: String(amount),
+      amount,
       password,
-      mobilephone: phone,
-      requesttransactionid: transactionId
+      mobilephone,
+      requesttransactionid
     }
     return await this.makeRequest('POST', body, IntouchAPIEndpoints.REQUEST_PAYMENT)
   }
