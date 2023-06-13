@@ -66,8 +66,8 @@ export class IntouchApi {
     const password = this.generatePassword()
     const body = {
       username: this.intouchUsername,
-      timestamp: Math.round(new Date().getTime() / 1000),
-      amount,
+      timestamp: String(Math.round(new Date().getTime() / 1000)),
+      amount: String(amount),
       password,
       mobilephone: phone,
       requesttransactionid: transactionId
