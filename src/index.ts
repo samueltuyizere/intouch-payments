@@ -1,7 +1,7 @@
-import { GetBalanceFailureResponse, GetBalanceSuccessResponse, IntouchAPIEndpoints, RequestDepositResponse, RequestPaymentResponse } from './types';
 import axios from 'axios';
 import * as crypto from 'crypto';
 import * as FormData from 'form-data';
+import { GetBalanceFailureResponse, GetBalanceSuccessResponse, IntouchAPIEndpoints, RequestDepositResponse, RequestPaymentResponse } from './types';
 
 export class IntouchApi {
     intouchBaseUrl:string = 'https://www.intouchpay.co.rw/api'
@@ -23,11 +23,13 @@ export class IntouchApi {
         data: body,
         headers: { 'Content-Type': 'application/json' }
       })
+      console.log(response)
       const data = await response.data
       return data
     } catch (err) {
         if(err instanceof Error){
-            throw new Error(err.message)
+          console.error(err)
+            throw new Error(err.name)
         }
       throw new Error('There was an error sending a request to intouch')
     }
