@@ -37,7 +37,7 @@ npm install intouch-payments
 
 ```javascript
 const IntouchApi = require('intouch-payments'); // or import IntouchApi from 'intouch-payments'
-const intouch = new IntouchApi(process.env.INTOUCH_USERNAME, process.env.INTOUCH_ACCOUNT_NO, process.env.INTOUCH_PARTNER_PASSWORD);
+const intouch = new IntouchApi(process.env.INTOUCH_USERNAME, process.env.INTOUCH_ACCOUNT_NO, process.env.INTOUCH_PARTNER_PASSWORD, process.env.INTOUCH_CALLBACK_URL);
 ```
 
 ### Getting money from a momo account (requesting a payment)
