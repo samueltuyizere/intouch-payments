@@ -4,21 +4,23 @@ import * as FormData from 'form-data';
 import { GetBalanceFailureResponse, GetBalanceSuccessResponse, IntouchAPIEndpoints, RequestDepositResponse, RequestPaymentResponse } from './types';
 
 export class IntouchApi {
-    intouchBaseUrl:string = 'https://www.intouchpay.co.rw/api'
-    intouchAccountId: string;
-    intouchPassword: string;
-    intouchUsername: string;
-    constructor(intouchAccountId: string,  intouchPassword: string, intouchUsername: string){
-        this.intouchAccountId = intouchAccountId;
-        this.intouchPassword = intouchPassword;
-        this.intouchUsername = intouchUsername;
+    baseUrl:string = 'https://www.intouchpay.co.rw/api'
+    accountId: string;
+    password: string;
+    username: string;
+    callbackUrl: string;
+    constructor(intouchAccountId: string,  intouchPassword: string, intouchUsername: string, intouchCallbackUrl: string){
+        this.accountId = intouchAccountId;
+        this.password = intouchPassword;
+        this.username = intouchUsername;
+        this.callbackUrl = intouchCallbackUrl;
     }
   private async makeRequest (
     method: string, body: any, endpoint: IntouchAPIEndpoints | string
   ) {
     try {
       const response = await axios({
-        url: `${this.intouchBaseUrl}${endpoint}`,
+        url: `${this.baseUrl}${endpoint}`,
         method,
         data: body,
         headers: { 'Content-Type': 'application/json' }
@@ -39,11 +41,11 @@ export class IntouchApi {
     return crypto.createHash('sha256').update(
       Buffer.from(
         `${
-          this.intouchUsername
+          this.username
         }${
-          this.intouchAccountId
+          this.accountId
         }${
-          this.intouchPassword
+          this.password
         }${
           Math.round(new Date().getTime() / 1000)
         }`)
@@ -69,12 +71,13 @@ export class IntouchApi {
     ): Promise<RequestPaymentResponse> {
     const password = this.generatePassword()
     const body = {
-      username: this.intouchUsername,
+      username: this.username,
       timestamp: String(Math.round(new Date().getTime() / 1000)),
       amount,
       password,
       mobilephone,
-      requesttransactionid
+      requesttransactionid,
+      callbackUrl:this.callbackUrl
     }
     return await this.makeRequest('POST', body, IntouchAPIEndpoints.REQUEST_PAYMENT)
   }
@@ -93,7 +96,7 @@ export class IntouchApi {
   public async requestDeposit (amount: number, phone: string, transactionId: string, reason: string): Promise<RequestDepositResponse> {
     const password = this.generatePassword()
     const body = {
-      username: this.intouchUsername,
+      username: this.username,
       timestamp: Math.round(new Date().getTime() / 1000),
       amount,
       withdrawcharge: 0,
@@ -110,14 +113,14 @@ export class IntouchApi {
     const password = this.generatePassword()
 
     const bodyFormData = new FormData()
-    bodyFormData.append('username', this.intouchUsername)
+    bodyFormData.append('username', this.username)
     bodyFormData.append('timestamp', `${Math.round(new Date().getTime() / 1000)}`)
-    bodyFormData.append('accountno', this.intouchAccountId)
+    bodyFormData.append('accountno', this.accountId)
     bodyFormData.append('password', password)
 
     const config = {
       method: 'post',
-      url: `${this.intouchBaseUrl}${IntouchAPIEndpoints.GET_BALANCE}`,
+      url: `${this.baseUrl}${IntouchAPIEndpoints.GET_BALANCE}`,
       headers: {
         ...bodyFormData.getHeaders(),
         'Content-Length': bodyFormData.getLengthSync()
