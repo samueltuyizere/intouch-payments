@@ -93,7 +93,7 @@ export class IntouchApi {
    * @param reason // your reason/note/comment on the transaction
    * @returns 
    */
-  public async requestDeposit (amount: number, phone: string, transactionId: string, reason: string): Promise<RequestDepositResponse> {
+  public async requestDeposit (amount: string, phone: string, transactionId: string, reason: string): Promise<RequestDepositResponse> {
     const password = this.generatePassword()
     const body = {
       username: this.username,
