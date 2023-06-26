@@ -1,4 +1,5 @@
 [![NPM](https://nodei.co/npm/intouch-payments.png)](https://nodei.co/npm/intouch-payments/)
+[![npm version](https://badge.fury.io/js/intouch-payments.svg)](https://badge.fury.io/js/intouch-payments)
 [![wakatime](https://wakatime.com/badge/github/samueltuyizere/intouch-payments.svg)](https://wakatime.com/badge/github/samueltuyizere/intouch-payments)
 
 ## Summary
