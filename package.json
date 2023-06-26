@@ -1,6 +1,6 @@
 {
   "name": "intouch-payments",
-  "version": "2.0.1",
+  "version": "2.0.2",
   "description": "This is a js wrapper for the intouchpayments API to process MTN MoMo and Airtel Money Transactions",
   "main": "dist/index.js",
   "repository": {

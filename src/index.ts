@@ -77,7 +77,7 @@ export class IntouchApi {
       password,
       mobilephone,
       requesttransactionid,
-      callbackUrl:this.callbackUrl
+      callbackurl:this.callbackUrl
     }
     return await this.makeRequest('POST', body, IntouchAPIEndpoints.REQUEST_PAYMENT)
   }
